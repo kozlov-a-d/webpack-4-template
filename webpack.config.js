@@ -82,7 +82,7 @@ module.exports = {
             { from: './src/assets/fonts',   to: './assets/fonts' },
             { from: './src/assets/favicon', to: './assets/favicon' },
             { from: './src/assets/images',  to: './assets/images' },
-            { from: './src/assets/uploads', to: './assets/uploads' }
+            // { from: './src/assets/uploads', to: './assets/uploads' }
         ]),
         new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i,
             optipng: {
