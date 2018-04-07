@@ -14,7 +14,7 @@ https://habrahabr.ru/company/skbkontur/blog/351080/
 3. добавить оптимизацию картинок
 4. посмотреть статью про ускорение билда
 5. авторелоад - done
-6. postCSS
+6. postCSS - done
 
 
 

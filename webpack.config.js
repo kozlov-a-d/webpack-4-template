@@ -1,9 +1,11 @@
 const path = require('path');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
+const ImageminPlugin = require('imagemin-webpack-plugin').default;
+const imageminMozjpeg = require('imagemin-mozjpeg');
 const fs = require('fs');
 
 const myPath = {
@@ -82,6 +84,14 @@ module.exports = {
             { from: './src/assets/images',  to: './assets/images' },
             { from: './src/assets/uploads', to: './assets/uploads' }
         ]),
+        new ImageminPlugin({ test: /\.(jpe?g|png|gif|svg)$/i,
+            optipng: {
+                optimizationLevel: 5
+            },
+            plugins: [
+                imageminMozjpeg({ quality: 90, progressive: true })
+              ]
+        }),
         new BrowserSyncPlugin({
             host: 'localhost',
             port: 3000,
