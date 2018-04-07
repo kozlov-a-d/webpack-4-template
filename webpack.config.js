@@ -61,7 +61,7 @@ module.exports = {
         }, {
             test: /\.(sass|scss)$/,
             include: path.resolve(__dirname, myPath.styles.resolve),
-            use: ExtractTextPlugin.extract({
+            use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
                 use: [{
                         loader: "css-loader",
                         options: {
@@ -77,15 +77,20 @@ module.exports = {
                         }
                     }
                 ]
-            })
+            }))
         }, {
             test: /\.html$/,
             include: path.resolve(__dirname, myPath.html.resolve),
             use: ['raw-loader']
         }, ]
     },
+    devServer: {
+        // contentBase: path.join(__dirname, 'src'),
+        contentBase: './src',
+        watchContentBase: true
+    },
     plugins: [
-        // new CleanWebpackPlugin([myPath.dist]),
+        new CleanWebpackPlugin([myPath.dist]),
         new ExtractTextPlugin({
             filename: myPath.styles.output,
             allChunks: true,
