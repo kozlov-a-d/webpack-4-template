@@ -53,35 +53,19 @@ module.exports = {
         rules: [{
             test: /\.js$/,
             include: path.resolve(__dirname, myPath.scripts.resolve),
-            use: {
-                loader: 'babel-loader',
-                options: {
-                    presets: 'env'
-                }
-            }
+            use: { loader: 'babel-loader', options: { presets: 'env' } }
         }, {
             test: /\.(sass|scss)$/,
             include: path.resolve(__dirname, myPath.styles.resolve),
             use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
-                use: [{
-                        loader: "css-loader",
-                        options: {
-                            sourceMap: true,
-                            minimize: true,
-                            url: false
-                        }
-                    },
-                    {
-                        loader: "sass-loader",
-                        options: {
-                            sourceMap: true
-                        }
-                    }
+                use: [
+                    { loader: "css-loader",     options: { sourceMap: true, minimize: true, url: false } },
+                    { loader: "sass-loader",    options: { sourceMap: true } },
+                    { loader: "postcss-loader", options: {} }
                 ]
             }))
         }, {
             test: /\.twig$/,
-            // include: path.resolve(__dirname, myPath.html.resolve),
             use: ['twig-loader']
         }, {
             test: /\.html$/,
@@ -91,26 +75,12 @@ module.exports = {
     },
     plugins: [
         new CleanWebpackPlugin([myPath.dist]),
-        new ExtractTextPlugin({
-            filename: myPath.styles.output,
-            allChunks: true,
-        }),
-        new CopyWebpackPlugin([{
-            from: './src/assets/fonts',
-            to: './assets/fonts'
-          },
-          {
-            from: './src/assets/favicon',
-            to: './assets/favicon'
-          },
-          {
-            from: './src/assets/images',
-            to: './assets/images'
-          },
-          {
-            from: './src/assets/uploads',
-            to: './assets/uploads'
-          }
+        new ExtractTextPlugin({filename: myPath.styles.output, allChunks: true}),
+        new CopyWebpackPlugin([
+            { from: './src/assets/fonts',   to: './assets/fonts' },
+            { from: './src/assets/favicon', to: './assets/favicon' },
+            { from: './src/assets/images',  to: './assets/images' },
+            { from: './src/assets/uploads', to: './assets/uploads' }
         ]),
         new BrowserSyncPlugin({
             host: 'localhost',
