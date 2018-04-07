@@ -3,6 +3,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 const fs = require('fs');
 
 const myPath = {
@@ -32,7 +33,7 @@ function generateHtmlPlugins(templateDir) {
         return new HtmlWebpackPlugin({
             filename: `${name}.html`,
             template: path.resolve(__dirname, `${templateDir}/${name}.${extension}`),
-            inject: false,
+            inject: false
         })
     })
 }
@@ -45,7 +46,7 @@ module.exports = {
         myPath.styles.entry,
     ],
     output: {
-        filename: myPath.scripts.output
+        filename: myPath.scripts.output,
     },
     devtool: "source-map",
     module: {
@@ -79,15 +80,14 @@ module.exports = {
                 ]
             }))
         }, {
+            test: /\.twig$/,
+            // include: path.resolve(__dirname, myPath.html.resolve),
+            use: ['twig-loader']
+        }, {
             test: /\.html$/,
             include: path.resolve(__dirname, myPath.html.resolve),
             use: ['raw-loader']
         }, ]
-    },
-    devServer: {
-        // contentBase: path.join(__dirname, 'src'),
-        contentBase: './src',
-        watchContentBase: true
     },
     plugins: [
         new CleanWebpackPlugin([myPath.dist]),
@@ -112,5 +112,10 @@ module.exports = {
             to: './assets/uploads'
           }
         ]),
+        new BrowserSyncPlugin({
+            host: 'localhost',
+            port: 3000,
+            server: { baseDir: [myPath.dist] }
+          })
     ].concat(htmlPlugins)
 };

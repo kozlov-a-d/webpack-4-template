@@ -4,4 +4,4 @@ $(function() {
     $('body').css('color', 'blue');
 });
 
-console.log('test');
+console.log('realy! webpack-dev-server is bullshit!!!');
