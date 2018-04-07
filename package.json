@@ -5,6 +5,10 @@
     "main": "index.js",
     "author": "Kozlov Andrey",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "git@github.com:kozlov-a-d/webpack-4-template.git"
+    },
     "scripts": {
         "dev": "webpack --mode development",
         "build": "webpack --mode production",
