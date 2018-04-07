@@ -1,28 +1,34 @@
-$font-stack: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+@import "~normalize.css";
+@import "~animate.css";
+@import "utilities.scss";
+@import "variables.scss";
 
+* {
+    box-sizing: border-box;
+    outline: none;
+}
 
+html {
+    height: 100%;
+}
 
 body {
-    font-family: $font-stack;
-    #logo {
-        width: 10rem;
-    }
-    .container {
-        img {
-            width: 20rem;
-            filter: blur();
-        }
-    }
-    .test{
-        display: block;
-        width: 40px;
-    }
-    .title{
-        padding: 100px 20px 20px;
-        text-align: center;
-        background: url('../images/GitHub-Mark.png') center 20px no-repeat;
-        background: #eee url('../images/GitHub-Mark.png') center 20px no-repeat; 
-        
-        background-size: 60px 60px;  
+    padding: 0;
+    margin: 0;
+    * {
+        box-sizing: border-box;
     }
 }
+
+.fullscreen {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 10;
+    background: rgb(141, 141, 141);
+}
+
+@import "layout.scss";
+@import "typography.scss";

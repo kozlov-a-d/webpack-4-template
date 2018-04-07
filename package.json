@@ -16,8 +16,15 @@
         "postbuild": "npm run beautify",
         "watch": "webpack --mode development --watch"
     },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "IE 11"
+    ],
     "dependencies": {
-        "jquery": "^3.3.1"
+        "animate.css": "^3.6.1",
+        "jquery": "^3.3.1",
+        "normalize.css": "^8.0.0"
     },
     "devDependencies": {
         "browser-sync": "^2.23.6",
