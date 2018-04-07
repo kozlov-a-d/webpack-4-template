@@ -1,0 +1,31 @@
+$font-stack: -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+// @font-face {
+//     font-family: 'Roboto';
+//     font-style: normal;
+//     font-weight: 400;
+//     src: url(../fonts/Roboto-Regular.ttf);
+// }
+
+body {
+    font-family: $font-stack;
+    #logo {
+        width: 10rem;
+    }
+    .container {
+        img {
+            width: 20rem;
+            filter: blur();
+        }
+    }
+    .test{
+        display: block;
+        width: 40px;
+    }
+    .title{
+        padding: 100px 20px 20px;
+        text-align: center;
+        background: url('../images/GitHub-Mark.png') center 20px no-repeat;
+        background-size: 60px 60px;  
+    }
+}

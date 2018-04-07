@@ -1,0 +1,31 @@
+{
+    "name": "webpack-4-template",
+    "version": "1.0.0",
+    "description": "quick start template using webpack 4",
+    "main": "index.js",
+    "author": "Kozlov Andrey",
+    "license": "MIT",
+    "scripts": {
+        "dev": "webpack --mode development",
+        "build": "webpack --mode production",
+        "beautify": "html dist/*.html --indent-size 4",
+        "build-and-beautify": "webpack --mode production && html dist/*.html --indent-size 4",
+        "watch": "webpack --mode development --watch",
+        "start": "webpack-dev-server --mode development --open"
+    },
+    "dependencies": {
+        "clean-webpack-plugin": "^0.1.19",
+        "copy-webpack-plugin": "^4.5.1",
+        "css-loader": "^0.28.11",
+        "extract-text-webpack-plugin": "^4.0.0-beta.0",
+        "html-cli": "^1.0.0",
+        "html-webpack-plugin": "^3.2.0",
+        "jquery": "^3.3.1",
+        "node-sass": "^4.8.3",
+        "raw-loader": "^0.5.1",
+        "sass-loader": "^6.0.7",
+        "webpack": "^4.5.0",
+        "webpack-cli": "^2.0.14",
+        "webpack-dev-server": "^3.1.1"
+    }
+}
