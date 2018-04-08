@@ -16,6 +16,7 @@
         "postbuild": "npm run beautify",
         "watch": "webpack --mode development --watch"
     },
+    "eslint.packageManager": "yarn",
     "browserslist": [
         "> 1%",
         "last 2 versions",
